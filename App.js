@@ -11,9 +11,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Splash" component={SplashScreen} />
+        <Stack.Screen name="Splash" component={SplashScreen} options={{headerShown: false}} />
         <Stack.Screen
-          options={{gestureEnabled: false}}
+          options={{gestureEnabled: false, headerShown: false}}
           name="Login"
           component={Login}
         />

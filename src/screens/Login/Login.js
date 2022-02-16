@@ -20,7 +20,9 @@ export default function Login() {
   return (
     <Container>
 
-      <Logo source={require('../../../assets/Logo.svg')} />
+      <Logo
+       source={require('../../../assets/Logo.svg')}
+      />
 
       <InputLogin
         onChangeText={setUserName}
