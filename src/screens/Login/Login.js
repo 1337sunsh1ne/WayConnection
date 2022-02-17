@@ -1,11 +1,28 @@
 /* eslint-disable prettier/prettier */
-import { View, BackHandler, Image } from 'react-native';
+import {
+  BackHandler,
+  ImageBackground,
+  Text,
+  View,
+} from 'react-native';
+
+
 import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-import { Container, InputLogin, Logo } from './styles';
-// import {Logo} from '../../../assets/Logo.svg';
+import {
+  ButtonEntrar,
+  Container,
+  InputLogin,
+  Logo,
+  TextButton,
+  TextCadastro,
+}
+  from './styles';
 
+
+import LogoWay from '../../../assets/Logo.png';
+import Background from '../../../assets/Background.png'
 export default function Login() {
 
   const [userName, setUserName] = useState();
@@ -17,24 +34,41 @@ export default function Login() {
     });
   }, []);
 
+  const navigation = useNavigation();
+
   return (
-    <Container>
 
-      <Logo
-       source={require('../../../assets/Logo.svg')}
-      />
+    <ImageBackground
+      source={Background}
+      resizeMode='cover'
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+    >
+      <Container>
 
-      <InputLogin
-        onChangeText={setUserName}
-        value={userName}
-        placeholder="Username"
-      />
+        <Logo source={LogoWay} />
 
-      <InputLogin
-        onChangeText={setPassword}
-        value={password}
-        placeholder="Senha"
-      />
-    </Container>
+        <InputLogin
+          onChangeText={(value) => setUserName(value)}
+          value={userName}
+          placeholder="Username"
+        />
+
+        <InputLogin
+          onChangeText={(value) => setPassword(value)}
+          value={password}
+          placeholder="Senha"
+          secureTextEntry={true}
+        />
+
+        <ButtonEntrar>
+          <TextButton>Entrar</TextButton>
+        </ButtonEntrar>
+
+        <View style={{ marginTop: 31, display: 'flex', flexDirection: 'row' }}>
+          <Text>Ainda não tem um conta?</Text>
+          <TextCadastro onPress={() => navigation.navigate('Register')}>Cadastre-se</TextCadastro>
+        </View>
+      </Container>
+    </ImageBackground >
   );
 }
