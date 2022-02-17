@@ -3,13 +3,9 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
     display:flex;
-    flex: 1;
     justify-content:center;
     align-items:center;
-    padding: 0;
-    margin: 0;
 `;
-
 
 export const InputLogin = styled.TextInput`
     width: 300px;
@@ -24,5 +20,26 @@ export const InputLogin = styled.TextInput`
 export const Logo = styled.Image`
     width:238px;
     height: 50px;
-    background-color:red;
+    margin-bottom:39px
+`;
+
+export const ButtonEntrar = styled.TouchableOpacity`
+    width: 150px;
+    height: 47px;
+    background-color:#6E742E;
+    border-radius:10px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:26px;
+`;
+
+export const TextButton = styled.Text`
+    color: #ffffff;
+    font-size:18px;
+`;
+
+export const TextCadastro = styled.Text`
+    color:#0038FF ;
+    margin-left:5px
 `;
