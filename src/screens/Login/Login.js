@@ -1,14 +1,7 @@
-/* eslint-disable prettier/prettier */
-import {
-  BackHandler,
-  ImageBackground,
-  Text,
-  View,
-} from 'react-native';
+import {BackHandler, ImageBackground, Text, View} from 'react-native';
 
-
-import React, { useEffect, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 import {
   ButtonEntrar,
@@ -17,14 +10,12 @@ import {
   Logo,
   TextButton,
   TextCadastro,
-}
-  from './styles';
-
+} from './styles';
 
 import LogoWay from '../../../assets/Logo.png';
-import Background from '../../../assets/Background.png'
-export default function Login() {
+import Background from '../../../assets/Background.png';
 
+export default function Login() {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
 
@@ -37,38 +28,41 @@ export default function Login() {
   const navigation = useNavigation();
 
   return (
-
     <ImageBackground
       source={Background}
-      resizeMode='cover'
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-    >
+      resizeMode="cover"
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
       <Container>
-
         <Logo source={LogoWay} />
 
         <InputLogin
-          onChangeText={(value) => setUserName(value)}
+          onChangeText={value => setUserName(value)}
           value={userName}
           placeholder="Username"
         />
 
         <InputLogin
-          onChangeText={(value) => setPassword(value)}
+          onChangeText={value => setPassword(value)}
           value={password}
           placeholder="Senha"
           secureTextEntry={true}
         />
 
-        <ButtonEntrar>
+        <ButtonEntrar onPress={() => navigation.navigate('ChoiceTrip')}>
           <TextButton>Entrar</TextButton>
         </ButtonEntrar>
 
-        <View style={{ marginTop: 31, display: 'flex', flexDirection: 'row' }}>
+        <View style={{marginTop: 31, display: 'flex', flexDirection: 'row'}}>
           <Text>Ainda não tem um conta?</Text>
-          <TextCadastro onPress={() => navigation.navigate('Register')}>Cadastre-se</TextCadastro>
+          <TextCadastro onPress={() => navigation.navigate('Register')}>
+            Cadastre-se
+          </TextCadastro>
         </View>
       </Container>
-    </ImageBackground >
+    </ImageBackground>
   );
 }
