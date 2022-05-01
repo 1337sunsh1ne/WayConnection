@@ -43,3 +43,7 @@ export const TextCadastro = styled.Text`
   color: #0038ff;
   margin-left: 5px;
 `;
+
+export const HiperLink = styled.Text`
+  color: blue;
+`;

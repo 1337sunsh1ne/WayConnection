@@ -1,16 +1,17 @@
-import {BackHandler, ImageBackground, Text, View} from 'react-native';
+import {BackHandler, ImageBackground, Text, View, Linking} from 'react-native';
 
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 import {
   ButtonEntrar,
   Container,
+  HiperLink,
   InputLogin,
   Logo,
   TextButton,
   TextCadastro,
-} from './styles';
+} from './styled';
 
 import LogoWay from '../../../assets/Logo.png';
 import Background from '../../../assets/Background.png';
@@ -52,16 +53,25 @@ export default function Login() {
           secureTextEntry={true}
         />
 
-        <ButtonEntrar onPress={() => navigation.navigate('ChoiceTrip')}>
+        <ButtonEntrar>
           <TextButton>Entrar</TextButton>
         </ButtonEntrar>
 
         <View style={{marginTop: 31, display: 'flex', flexDirection: 'row'}}>
           <Text>Ainda não tem um conta?</Text>
-          <TextCadastro onPress={() => navigation.navigate('Register')}>
+          <TextCadastro onPress={() => navigation.navigate('SignUp')}>
             Cadastre-se
           </TextCadastro>
         </View>
+        <Text>
+          Você viajante,{' '}
+          <HiperLink
+            onPress={() => {
+              Linking.openURL('https://www.google.com/');
+            }}>
+            Cadastre-se aqui
+          </HiperLink>
+        </Text>
       </Container>
     </ImageBackground>
   );
