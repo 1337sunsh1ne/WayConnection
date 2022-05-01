@@ -1,20 +1,25 @@
-import React, {useState} from 'react';
-
+import React, {useState, useContext} from 'react';
 import LogoWay from '../../../assets/Logo.png';
 import {
-  ButtonChoice,
   Container,
   InputCadastro,
-  ViewButton,
   TextButtonChoice,
   ButtonRegister,
 } from './styled';
-import {Logo} from '../Login/styles';
+import {Logo} from '../SignIn/styled';
 
-export default function Login() {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+import {AuthContext} from '../../contexts/auth';
+
+export default function SignUp() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const {signUp} = useContext(AuthContext);
+
+  function handleSignUp() {
+    signUp(email, password, name);
+  }
 
   return (
     <Container>
@@ -24,11 +29,13 @@ export default function Login() {
         value={name}
         onChangeText={value => setName(value)}
       />
+
       <InputCadastro
         placeholder="Email"
         value={email}
         onChangeText={value => setEmail(value)}
       />
+
       <InputCadastro
         placeholder="Digite sua senha"
         value={password}
@@ -36,18 +43,8 @@ export default function Login() {
         secureTextEntry={true}
       />
 
-      <ViewButton>
-        <ButtonChoice>
-          <TextButtonChoice>Guia</TextButtonChoice>
-        </ButtonChoice>
-
-        <ButtonChoice style={{backgroundColor: '#6E742E'}}>
-          <TextButtonChoice>Viajantes</TextButtonChoice>
-        </ButtonChoice>
-      </ViewButton>
-
-      <ButtonRegister>
-        <TextButtonChoice style={{fontSize: 20}}>Cadastrar</TextButtonChoice>
+      <ButtonRegister onPress={handleSignUp}>
+        <TextButtonChoice>Cadastrar</TextButtonChoice>
       </ButtonRegister>
     </Container>
   );
